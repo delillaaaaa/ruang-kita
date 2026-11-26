@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Heart, Lock, ShieldCheck, Check, Sparkles } from 'lucide-react';
+import { Heart, Lock, ShieldCheck, Check } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { UserRole } from '../types';
 
@@ -28,14 +28,14 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto py-12 px-4 animate-fade-in">
+    <div className="max-w-md mx-auto py-12 px-4 animate-slide-right">
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-cream-200/90 shadow-soft space-y-6">
         {/* Brand header */}
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rosewood-500 to-terracotta-500 text-white flex items-center justify-center mx-auto shadow-sm">
+          <div className="w-12 h-12 rounded-full bg-brand-800 text-white flex items-center justify-center mx-auto shadow-sm">
             <Heart className="w-6 h-6 fill-white" />
           </div>
-          <h2 className="font-serif text-2xl font-extrabold text-neutral-900">
+          <h2 className="font-sans font-black text-2xl text-brand-800">
             Akses Ruang Kita
           </h2>
           <p className="text-xs text-neutral-500">
@@ -48,11 +48,11 @@ export const LoginPage: React.FC = () => {
           <div className="bg-cream-100/80 p-3.5 rounded-2xl text-xs flex items-center justify-between border border-cream-200">
             <div>
               <span className="text-neutral-500">Sedang aktif sebagai: </span>
-              <strong className="text-neutral-900">{currentUser}</strong>
+              <strong className="text-brand-800">{currentUser}</strong>
             </div>
             <button
               onClick={logout}
-              className="text-rosewood-600 hover:underline font-semibold"
+              className="text-brand-800 hover:underline font-bold"
             >
               Keluar
             </button>
@@ -61,7 +61,7 @@ export const LoginPage: React.FC = () => {
 
         {/* User Choice Selector */}
         <div className="space-y-2">
-          <label className="block text-xs font-semibold text-neutral-600">
+          <label className="block text-xs font-bold text-neutral-700 uppercase tracking-wider">
             Pilih Siapa yang Sedang Membuka:
           </label>
           <div className="grid grid-cols-2 gap-3">
@@ -78,7 +78,7 @@ export const LoginPage: React.FC = () => {
                 J
               </div>
               <div className="font-bold text-sm text-neutral-800">Januar</div>
-              <div className="text-[10px] text-blue-600 font-medium">Skor Biru</div>
+              <div className="text-[10px] text-blue-600 font-semibold uppercase tracking-wider">Skor Biru</div>
             </button>
 
             <button
@@ -94,20 +94,17 @@ export const LoginPage: React.FC = () => {
                 A
               </div>
               <div className="font-bold text-sm text-neutral-800">Adel</div>
-              <div className="text-[10px] text-pink-600 font-medium">Skor Pink</div>
+              <div className="text-[10px] text-pink-600 font-semibold uppercase tracking-wider">Skor Pink</div>
             </button>
           </div>
         </div>
 
-        {/* Passcode input */}
-        <form onSubmit={handleLogin} className="space-y-4 text-xs">
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <label className="font-semibold text-neutral-700">
-                Passcode Berdua
-              </label>
-              <span className="text-[11px] text-neutral-400">Default: 1234</span>
-            </div>
+        {/* Form Passcode */}
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div className="space-y-1.5">
+            <label className="block text-xs font-bold text-neutral-700 uppercase tracking-wider">
+              Masukkan Passcode (Default: 1234)
+            </label>
             <div className="relative">
               <Lock className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
@@ -115,37 +112,32 @@ export const LoginPage: React.FC = () => {
                 maxLength={6}
                 value={pin}
                 onChange={(e) => setPin(e.target.value)}
-                placeholder="Masukkan 4 angka kode"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-cream-300 bg-cream-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-rosewood-500/20 focus:border-rosewood-500 text-sm font-mono tracking-widest text-center"
+                placeholder="••••"
+                className="w-full pl-10 pr-4 py-2.5 text-center tracking-widest text-lg font-mono rounded-full border border-cream-300 bg-cream-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-700/20 focus:border-brand-700"
               />
             </div>
+            {errorMsg && (
+              <p className="text-[11px] text-red-600 font-semibold">{errorMsg}</p>
+            )}
+            {successMsg && (
+              <p className="text-[11px] text-green-600 font-semibold flex items-center gap-1">
+                <Check className="w-3.5 h-3.5" />
+                <span>{successMsg}</span>
+              </p>
+            )}
           </div>
-
-          {errorMsg && (
-            <div className="p-2.5 rounded-xl bg-red-50 border border-red-100 text-red-600 text-center font-medium">
-              {errorMsg}
-            </div>
-          )}
-
-          {successMsg && (
-            <div className="p-2.5 rounded-xl bg-green-50 border border-green-100 text-green-700 text-center font-medium flex items-center justify-center gap-1.5">
-              <Check className="w-4 h-4" />
-              <span>{successMsg}</span>
-            </div>
-          )}
 
           <button
             type="submit"
-            className="w-full py-3 rounded-2xl bg-gradient-to-r from-rosewood-500 to-terracotta-500 hover:from-rosewood-600 hover:to-terracotta-600 text-white font-bold text-sm shadow-sm transition-all active:scale-98"
+            className="w-full py-3 rounded-full bg-brand-800 hover:bg-brand-900 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all active:scale-95"
           >
-            Masuk Sekarang
+            Masuk ke Ruang Kita
           </button>
         </form>
 
-        <div className="border-t border-cream-200 pt-4 text-center">
-          <p className="text-[11px] text-neutral-400 leading-relaxed">
-            Hanya Januar &amp; Adel yang memiliki akses untuk mengedit dan mencatat momen.
-          </p>
+        <div className="pt-2 text-center text-[11px] text-neutral-400 flex items-center justify-center gap-1">
+          <ShieldCheck className="w-3.5 h-3.5" />
+          <span>Privasi terjaga untuk cerita kalian berdua</span>
         </div>
       </div>
     </div>

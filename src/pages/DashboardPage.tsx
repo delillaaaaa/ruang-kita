@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 export const DashboardPage: React.FC = () => {
   const {
     currentUser,
-    setCurrentUser,
     journals,
     deleteJournal,
     openJournalModal,
@@ -49,21 +48,21 @@ export const DashboardPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8 pb-12 animate-fade-in">
+    <div className="space-y-8 pb-16 animate-slide-right">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-cream-200 text-neutral-700">
+            <span className="text-[10px] uppercase font-bold tracking-wider px-3 py-0.5 rounded-full bg-brand-100 text-brand-800">
               Panel Kontrol Pribadi
             </span>
             <span className="text-xs text-neutral-400">•</span>
             <span className="text-xs font-bold text-neutral-600 flex items-center gap-1">
               <UserCheck className="w-3.5 h-3.5 text-sage-600" />
-              Login: <strong>{currentUser || 'Tamu'}</strong>
+              Login: <strong className="text-brand-800">{currentUser || 'Tamu'}</strong>
             </span>
           </div>
-          <h1 className="font-serif text-3xl font-extrabold text-neutral-900 tracking-tight">
+          <h1 className="font-sans font-black text-3xl sm:text-4xl text-brand-800 tracking-tight leading-tight">
             Kelola Konten &amp; Aktivitas
           </h1>
           <p className="text-xs sm:text-sm text-neutral-500 mt-1">
@@ -74,7 +73,7 @@ export const DashboardPage: React.FC = () => {
         <div className="flex items-center gap-2">
           <Link
             to="/login"
-            className="px-3.5 py-2 rounded-xl bg-white border border-cream-200 text-neutral-700 hover:bg-cream-100 text-xs font-semibold transition-colors shadow-xs"
+            className="px-4 py-2 rounded-full bg-white border border-cream-200 text-neutral-700 hover:bg-cream-100 text-xs font-bold transition-colors shadow-xs uppercase tracking-wider"
           >
             Ganti Profil / Passcode
           </Link>
@@ -83,76 +82,76 @@ export const DashboardPage: React.FC = () => {
 
       {/* QUICK STATS CARDS */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-        <div className="bg-white p-4 rounded-2xl border border-cream-200/80 shadow-xs">
-          <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-1">
+        <div className="bg-white p-4 rounded-3xl border border-cream-200/90 shadow-soft">
+          <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-1">
             Total Jurnal
           </div>
-          <div className="text-2xl font-bold font-serif text-neutral-900">{journals.length}</div>
-          <div className="text-[11px] text-neutral-400 mt-1">Kenangan tercatat</div>
+          <div className="text-2xl font-black text-neutral-900">{journals.length}</div>
+          <div className="text-[11px] text-neutral-500 mt-0.5">Kenangan tercatat</div>
         </div>
 
-        <div className="bg-white p-4 rounded-2xl border border-cream-200/80 shadow-xs">
-          <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-1">
+        <div className="bg-white p-4 rounded-3xl border border-cream-200/90 shadow-soft">
+          <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-1">
             Bucket Selesai
           </div>
-          <div className="text-2xl font-bold font-serif text-sage-600">
+          <div className="text-2xl font-black text-sage-600">
             {stats.bucketListAchieved} / {stats.totalBucketList}
           </div>
-          <div className="text-[11px] text-neutral-400 mt-1">
+          <div className="text-[11px] text-neutral-500 mt-0.5">
             {stats.totalBucketList > 0
               ? `${Math.round((stats.bucketListAchieved / stats.totalBucketList) * 100)}% tercapai`
               : '0%'}
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-2xl border border-cream-200/80 shadow-xs">
-          <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-1">
+        <div className="bg-white p-4 rounded-3xl border border-cream-200/90 shadow-soft">
+          <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-1">
             Rata-rata Januar
           </div>
-          <div className="text-2xl font-bold font-serif text-blue-600">
+          <div className="text-2xl font-black text-blue-600">
             ★ {stats.averageRatingJanuar}
           </div>
-          <div className="text-[11px] text-neutral-400 mt-1">Skor kenangan</div>
+          <div className="text-[11px] text-neutral-500 mt-0.5">Skor kenangan</div>
         </div>
 
-        <div className="bg-white p-4 rounded-2xl border border-cream-200/80 shadow-xs">
-          <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-1">
+        <div className="bg-white p-4 rounded-3xl border border-cream-200/90 shadow-soft">
+          <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-1">
             Rata-rata Adel
           </div>
-          <div className="text-2xl font-bold font-serif text-pink-500">
+          <div className="text-2xl font-black text-pink-500">
             ★ {stats.averageRatingAdel}
           </div>
-          <div className="text-[11px] text-neutral-400 mt-1">Skor kenangan</div>
+          <div className="text-[11px] text-neutral-500 mt-0.5">Skor kenangan</div>
         </div>
       </div>
 
       {/* CONTENT MANAGEMENT TABS */}
-      <div className="bg-white rounded-3xl border border-cream-200/80 shadow-soft overflow-hidden">
+      <div className="bg-white rounded-3xl border border-cream-200/90 shadow-soft overflow-hidden">
         {/* Tab Headers */}
         <div className="flex items-center justify-between border-b border-cream-200 p-4 sm:p-5">
           <div className="flex items-center gap-2">
             <button
               onClick={() => setActiveTab('jurnal')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
                 activeTab === 'jurnal'
-                  ? 'bg-rosewood-500 text-white shadow-xs'
+                  ? 'bg-brand-800 text-white shadow-xs'
                   : 'text-neutral-600 hover:bg-cream-100'
               }`}
             >
-              <BookOpen className="w-4 h-4" />
+              <BookOpen className="w-3.5 h-3.5" />
               <span>Daftar Jurnal ({journals.length})</span>
             </button>
 
             <button
               onClick={() => setActiveTab('bucket')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
                 activeTab === 'bucket'
-                  ? 'bg-rosewood-500 text-white shadow-xs'
+                  ? 'bg-brand-800 text-white shadow-xs'
                   : 'text-neutral-600 hover:bg-cream-100'
               }`}
             >
-              <CheckSquare className="w-4 h-4" />
-              <span>Daftar Bucket List ({bucketList.length})</span>
+              <CheckSquare className="w-3.5 h-3.5" />
+              <span>Bucket List ({bucketList.length})</span>
             </button>
           </div>
 
@@ -160,201 +159,184 @@ export const DashboardPage: React.FC = () => {
             {activeTab === 'jurnal' ? (
               <button
                 onClick={() => openJournalModal()}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-rosewood-50 text-rosewood-700 hover:bg-rosewood-100 text-xs font-semibold transition-colors"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-brand-800 text-white text-xs font-bold uppercase tracking-wider shadow-xs hover:bg-brand-900 transition-colors"
               >
-                <Plus className="w-3.5 h-3.5" />
-                <span>Jurnal Baru</span>
+                <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
+                <span className="hidden sm:inline">Tambah Jurnal</span>
               </button>
             ) : (
               <button
                 onClick={() => openBucketModal()}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-50 text-amber-800 hover:bg-amber-100 text-xs font-semibold transition-colors"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-brand-800 text-white text-xs font-bold uppercase tracking-wider shadow-xs hover:bg-brand-900 transition-colors"
               >
-                <Plus className="w-3.5 h-3.5" />
-                <span>Bucket List Baru</span>
+                <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
+                <span className="hidden sm:inline">Tambah Rencana</span>
               </button>
             )}
           </div>
         </div>
 
-        {/* Tab Content: Jurnal Table */}
-        {activeTab === 'jurnal' && (
-          <div className="overflow-x-auto">
+        {/* Tab Table Content */}
+        <div className="p-4 sm:p-6 overflow-x-auto">
+          {activeTab === 'jurnal' ? (
             <table className="w-full text-left text-xs">
-              <thead className="bg-cream-50 border-b border-cream-200 text-neutral-500 font-semibold uppercase tracking-wider">
-                <tr>
-                  <th className="py-3 px-4">Tempat / Judul</th>
-                  <th className="py-3 px-4">Kategori</th>
-                  <th className="py-3 px-4">Tanggal</th>
-                  <th className="py-3 px-4 text-center">Skor Berdua</th>
-                  <th className="py-3 px-4 text-right">Aksi</th>
+              <thead>
+                <tr className="border-b border-cream-200 text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
+                  <th className="pb-3 pl-2">Foto &amp; Judul</th>
+                  <th className="pb-3">Tempat</th>
+                  <th className="pb-3">Kategori</th>
+                  <th className="pb-3">Skor J / A</th>
+                  <th className="pb-3 text-right pr-2">Aksi</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-cream-100">
-                {journals.map((entry) => (
-                  <tr key={entry.id} className="hover:bg-cream-50/60 transition-colors">
-                    <td className="py-3 px-4">
-                      <div className="font-bold text-neutral-900 font-serif text-sm">
-                        {entry.title}
+                {journals.map((j) => (
+                  <tr key={j.id} className="hover:bg-cream-50/50 transition-colors">
+                    <td className="py-3 pl-2">
+                      <div className="flex items-center gap-3">
+                        <img
+                          src={j.photos[0] || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=100&q=80'}
+                          alt={j.title}
+                          className="w-10 h-10 rounded-xl object-cover shrink-0"
+                        />
+                        <div>
+                          <Link to={`/jurnal/${j.id}`} className="font-bold text-neutral-900 hover:text-brand-800">
+                            {j.title}
+                          </Link>
+                          <div className="text-[10px] text-neutral-400">{j.date}</div>
+                        </div>
                       </div>
-                      <div className="text-neutral-500">{entry.placeName}</div>
                     </td>
-                    <td className="py-3 px-4">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-cream-200 text-neutral-700">
-                        {entry.category}
+                    <td className="py-3 text-neutral-600 font-medium">{j.placeName}</td>
+                    <td className="py-3">
+                      <span className="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-cream-200 text-neutral-700">
+                        {j.category}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-neutral-500 whitespace-nowrap">
-                      {entry.date}
+                    <td className="py-3 font-semibold">
+                      <span className="text-blue-600">{j.ratingJanuar}</span>
+                      <span className="text-neutral-400 mx-1">/</span>
+                      <span className="text-pink-500">{j.ratingAdel}</span>
                     </td>
-                    <td className="py-3 px-4 text-center">
-                      <div className="inline-flex items-center gap-2">
-                        <span className="text-blue-600 font-bold">J: {entry.ratingJanuar.toFixed(1)}</span>
-                        <span className="text-neutral-300">|</span>
-                        <span className="text-pink-600 font-bold">A: {entry.ratingAdel.toFixed(1)}</span>
+                    <td className="py-3 text-right pr-2">
+                      <div className="flex items-center justify-end gap-1.5">
+                        <button
+                          onClick={() => openJournalModal(j)}
+                          className="p-1.5 rounded-full hover:bg-cream-100 text-neutral-600 hover:text-brand-800"
+                          title="Edit"
+                        >
+                          <Edit3 className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          onClick={() => {
+                            if (confirm(`Hapus kenangan "${j.title}"?`)) {
+                              deleteJournal(j.id);
+                            }
+                          }}
+                          className="p-1.5 rounded-full hover:bg-red-50 text-neutral-400 hover:text-red-600"
+                          title="Hapus"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
                       </div>
-                    </td>
-                    <td className="py-3 px-4 text-right whitespace-nowrap space-x-1">
-                      <Link
-                        to={`/jurnal/${entry.id}`}
-                        className="px-2.5 py-1 rounded-lg text-neutral-600 hover:bg-cream-200 font-semibold"
-                      >
-                        Lihat
-                      </Link>
-                      <button
-                        onClick={() => openJournalModal(entry)}
-                        className="px-2.5 py-1 rounded-lg text-rosewood-600 hover:bg-rosewood-50 font-semibold"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => {
-                          if (confirm(`Hapus "${entry.title}"?`)) {
-                            deleteJournal(entry.id);
-                          }
-                        }}
-                        className="px-2.5 py-1 rounded-lg text-red-600 hover:bg-red-50 font-semibold"
-                      >
-                        Hapus
-                      </button>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          </div>
-        )}
-
-        {/* Tab Content: Bucket List Table */}
-        {activeTab === 'bucket' && (
-          <div className="overflow-x-auto">
+          ) : (
             <table className="w-full text-left text-xs">
-              <thead className="bg-cream-50 border-b border-cream-200 text-neutral-500 font-semibold uppercase tracking-wider">
-                <tr>
-                  <th className="py-3 px-4">Rencana</th>
-                  <th className="py-3 px-4">Kategori</th>
-                  <th className="py-3 px-4">Status</th>
-                  <th className="py-3 px-4">Estimasi Budget</th>
-                  <th className="py-3 px-4 text-right">Aksi</th>
+              <thead>
+                <tr className="border-b border-cream-200 text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
+                  <th className="pb-3 pl-2">Status</th>
+                  <th className="pb-3">Judul Rencana</th>
+                  <th className="pb-3">Kategori</th>
+                  <th className="pb-3">Estimasi Biaya</th>
+                  <th className="pb-3 text-right pr-2">Aksi</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-cream-100">
                 {bucketList.map((item) => (
-                  <tr key={item.id} className="hover:bg-cream-50/60 transition-colors">
-                    <td className="py-3 px-4">
-                      <div className={`font-bold font-serif text-sm ${item.status === 'done' ? 'line-through text-neutral-400' : 'text-neutral-900'}`}>
-                        {item.title}
-                      </div>
-                      {item.placeName && (
-                        <div className="text-neutral-500 text-[11px]">{item.placeName}</div>
-                      )}
+                  <tr key={item.id} className="hover:bg-cream-50/50 transition-colors">
+                    <td className="py-3 pl-2">
+                      <button
+                        onClick={() => toggleBucketStatus(item.id)}
+                        className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
+                          item.status === 'done'
+                            ? 'bg-sage-100 text-sage-700'
+                            : 'bg-amber-100 text-amber-800'
+                        }`}
+                      >
+                        {item.status === 'done' ? '✓ Selesai' : 'Wishlist'}
+                      </button>
                     </td>
-                    <td className="py-3 px-4">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-cream-200 text-neutral-700">
+                    <td className="py-3 font-bold text-neutral-900">{item.title}</td>
+                    <td className="py-3">
+                      <span className="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-cream-200 text-neutral-700">
                         {item.category}
                       </span>
                     </td>
-                    <td className="py-3 px-4">
-                      <button
-                        onClick={() => toggleBucketStatus(item.id)}
-                        className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-colors ${
-                          item.status === 'done'
-                            ? 'bg-sage-100 text-sage-700 hover:bg-sage-200'
-                            : 'bg-amber-100 text-amber-800 hover:bg-amber-200'
-                        }`}
-                      >
-                        {item.status === 'done' ? '✓ Sudah Tercapai' : '○ Wishlist'}
-                      </button>
-                    </td>
-                    <td className="py-3 px-4 text-neutral-600">
-                      {item.budgetEstimate || '—'}
-                    </td>
-                    <td className="py-3 px-4 text-right whitespace-nowrap space-x-1">
-                      <button
-                        onClick={() => openBucketModal(item)}
-                        className="px-2.5 py-1 rounded-lg text-neutral-600 hover:bg-cream-200 font-semibold"
-                      >
-                        Edit
-                      </button>
+                    <td className="py-3 text-neutral-600">{item.budgetEstimate || '-'}</td>
+                    <td className="py-3 text-right pr-2">
                       <button
                         onClick={() => {
-                          if (confirm(`Hapus "${item.title}"?`)) {
+                          if (confirm(`Hapus rencana "${item.title}"?`)) {
                             deleteBucketItem(item.id);
                           }
                         }}
-                        className="px-2.5 py-1 rounded-lg text-red-600 hover:bg-red-50 font-semibold"
+                        className="p-1.5 rounded-full hover:bg-red-50 text-neutral-400 hover:text-red-600"
+                        title="Hapus"
                       >
-                        Hapus
+                        <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
-      {/* DATA BACKUP & RESTORE SECTION */}
-      <div className="bg-cream-100/70 rounded-3xl p-6 border border-cream-200 space-y-4">
-        <div>
-          <h3 className="font-serif font-bold text-lg text-neutral-900">
-            Cadangan &amp; Pemulihan Data (Backup &amp; Restore)
-          </h3>
-          <p className="text-xs text-neutral-500">
-            Semua catatan tersimpan aman di browser kalian. Unduh file cadangan untuk memindahkannya ke HP lain.
-          </p>
-        </div>
+      {/* BACKUP & RESTORE / DATA CONTROL BOX */}
+      <div className="bg-white rounded-3xl p-6 border border-cream-200/90 shadow-soft space-y-4">
+        <h3 className="font-bold text-base text-neutral-900 flex items-center gap-2">
+          <ShieldCheck className="w-5 h-5 text-brand-800" />
+          <span>Cadangan Data &amp; Pemulihan</span>
+        </h3>
+        <p className="text-xs text-neutral-500 leading-relaxed">
+          Semua kenangan dan daftar impian tersimpan di peramban ini. Unduh file JSON cadangan agar kenangan tetap aman, atau pulihkan data di HP lain.
+        </p>
 
-        {importStatus && (
-          <div className="p-3 bg-green-100 text-green-800 rounded-xl text-xs font-semibold">
-            {importStatus}
-          </div>
-        )}
-
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3 pt-2">
           <button
             onClick={exportDataJson}
-            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white border border-cream-300 hover:bg-cream-50 text-neutral-800 text-xs font-bold shadow-xs transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-cream-100 hover:bg-brand-50 text-brand-800 font-bold text-xs uppercase tracking-wider transition-colors shadow-2xs"
           >
-            <Download className="w-4 h-4 text-neutral-600" />
-            <span>Ekspor Data (Unduh JSON)</span>
+            <Download className="w-4 h-4" />
+            <span>Ekspor JSON (Cadangkan)</span>
           </button>
 
-          <label className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white border border-cream-300 hover:bg-cream-50 text-neutral-800 text-xs font-bold shadow-xs transition-colors cursor-pointer">
-            <Upload className="w-4 h-4 text-neutral-600" />
-            <span>Impor Data Cadangan</span>
+          <label className="flex items-center gap-2 px-4 py-2 rounded-full bg-cream-100 hover:bg-brand-50 text-brand-800 font-bold text-xs uppercase tracking-wider transition-colors shadow-2xs cursor-pointer">
+            <Upload className="w-4 h-4" />
+            <span>Impor JSON (Pulihkan)</span>
             <input type="file" accept=".json" onChange={handleImportFile} className="hidden" />
           </label>
 
           <button
             onClick={handleReset}
-            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-red-600 hover:bg-red-50 text-xs font-semibold transition-colors ml-auto"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 hover:bg-red-100 text-red-700 font-bold text-xs uppercase tracking-wider transition-colors ml-auto"
           >
             <RotateCcw className="w-4 h-4" />
-            <span>Reset ke Data Demo Awal</span>
+            <span>Reset ke Contoh Awal</span>
           </button>
         </div>
+
+        {importStatus && (
+          <div className="p-3 bg-green-50 border border-green-200 text-green-700 text-xs rounded-2xl animate-fade-in font-semibold">
+            ✓ {importStatus}
+          </div>
+        )}
       </div>
     </div>
   );

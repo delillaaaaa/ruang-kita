@@ -18,12 +18,12 @@ export const App: React.FC = () => {
   return (
     <AppProvider>
       <HashRouter>
-        <div className="min-h-screen flex flex-col bg-cream-50 text-neutral-800 antialiased selection:bg-rosewood-100 selection:text-rosewood-700">
+        <div className="min-h-screen flex flex-col bg-cream-50 text-neutral-800 antialiased selection:bg-brand-100 selection:text-brand-900">
           {/* Top Navbar */}
           <Navbar />
 
           {/* Main Content Area */}
-          <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 pt-6 sm:pt-8">
+          <main className="flex-1 w-full max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 pt-6 sm:pt-8">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/jurnal" element={<JournalListPage />} />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, Calendar, MapPin, Edit3, Trash2, Share2, Tag, DollarSign, Heart, ChevronLeft, ChevronRight, Check } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin, Edit3, Trash2, Share2, DollarSign, Heart, ChevronLeft, ChevronRight, Check } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { DualRatingDisplay } from '../components/ui/DualRatingDisplay';
 
@@ -15,8 +15,8 @@ export const JournalDetailPage: React.FC = () => {
 
   if (!journal) {
     return (
-      <div className="max-w-xl mx-auto text-center py-20 space-y-4 animate-fade-in">
-        <h2 className="font-serif text-2xl font-bold text-neutral-800">
+      <div className="max-w-xl mx-auto text-center py-20 space-y-4 animate-slide-right">
+        <h2 className="font-bold text-2xl text-neutral-800">
           Kenangan tidak ditemukan
         </h2>
         <p className="text-xs text-neutral-500">
@@ -24,7 +24,7 @@ export const JournalDetailPage: React.FC = () => {
         </p>
         <Link
           to="/jurnal"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-rosewood-500 text-white font-semibold text-xs"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-800 text-white font-bold text-xs uppercase tracking-wider"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Kembali ke Katalog Jurnal</span>
@@ -53,12 +53,12 @@ export const JournalDetailPage: React.FC = () => {
     : ['https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80'];
 
   return (
-    <article className="max-w-3xl mx-auto space-y-8 pb-16 animate-fade-in">
+    <article className="max-w-3xl mx-auto space-y-8 pb-16 animate-slide-right">
       {/* Top Nav actions */}
       <div className="flex items-center justify-between">
         <button
           onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-600 hover:text-neutral-900 bg-white px-3 py-2 rounded-xl border border-cream-200 shadow-xs transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-600 hover:text-neutral-900 bg-white px-4 py-2 rounded-full border border-cream-200 shadow-xs transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Kembali</span>
@@ -68,12 +68,12 @@ export const JournalDetailPage: React.FC = () => {
           <button
             onClick={handleShare}
             title="Salin Tautan"
-            className="flex items-center gap-1 px-3 py-2 rounded-xl bg-white border border-cream-200 text-neutral-700 hover:bg-cream-100 text-xs font-medium shadow-xs transition-colors"
+            className="flex items-center gap-1 px-4 py-2 rounded-full bg-white border border-cream-200 text-neutral-700 hover:bg-cream-100 text-xs font-bold shadow-xs transition-colors"
           >
             {copied ? (
               <>
                 <Check className="w-3.5 h-3.5 text-green-600" />
-                <span className="text-green-600 font-semibold">Tersalin!</span>
+                <span className="text-green-600 font-bold">Tersalin!</span>
               </>
             ) : (
               <>
@@ -85,7 +85,7 @@ export const JournalDetailPage: React.FC = () => {
 
           <button
             onClick={() => openJournalModal(journal)}
-            className="flex items-center gap-1 px-3 py-2 rounded-xl bg-cream-100 border border-cream-200 text-neutral-700 hover:bg-cream-200 text-xs font-semibold transition-colors"
+            className="flex items-center gap-1 px-4 py-2 rounded-full bg-cream-100 border border-cream-200 text-brand-800 hover:bg-brand-50 text-xs font-bold transition-colors"
           >
             <Edit3 className="w-3.5 h-3.5" />
             <span>Edit</span>
@@ -93,7 +93,7 @@ export const JournalDetailPage: React.FC = () => {
 
           <button
             onClick={handleDelete}
-            className="p-2 rounded-xl bg-red-50 border border-red-100 text-red-600 hover:bg-red-100 transition-colors"
+            className="p-2 rounded-full bg-red-50 border border-red-100 text-red-600 hover:bg-red-100 transition-colors"
             title="Hapus Entri"
           >
             <Trash2 className="w-3.5 h-3.5" />
@@ -146,9 +146,9 @@ export const JournalDetailPage: React.FC = () => {
               <button
                 key={i}
                 onClick={() => setActivePhotoIndex(i)}
-                className={`relative w-20 h-14 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${
+                className={`relative w-20 h-14 rounded-2xl overflow-hidden shrink-0 border-2 transition-all ${
                   activePhotoIndex === i
-                    ? 'border-rosewood-500 ring-2 ring-rosewood-500/20 scale-102'
+                    ? 'border-brand-700 ring-2 ring-brand-700/20 scale-102'
                     : 'border-cream-300 opacity-70 hover:opacity-100'
                 }`}
               >
@@ -162,7 +162,7 @@ export const JournalDetailPage: React.FC = () => {
       {/* HEADER & METADATA */}
       <header className="space-y-3 border-b border-cream-200 pb-6">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-rosewood-100 text-rosewood-700">
+          <span className="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-100 text-brand-800">
             {journal.category}
           </span>
           <div className="flex items-center gap-1 text-xs text-neutral-500">
@@ -170,19 +170,19 @@ export const JournalDetailPage: React.FC = () => {
             <span>{journal.date}</span>
           </div>
           {journal.costEstimate && (
-            <div className="flex items-center gap-1 text-xs text-terracotta-600 font-semibold bg-terracotta-50 px-2.5 py-0.5 rounded-full border border-terracotta-200/60">
+            <div className="flex items-center gap-1 text-xs text-brand-800 font-bold bg-brand-50 px-3 py-0.5 rounded-full border border-brand-200/60">
               <DollarSign className="w-3 h-3" />
               <span>{journal.costEstimate}</span>
             </div>
           )}
         </div>
 
-        <h1 className="font-serif text-3xl sm:text-4xl font-extrabold text-neutral-900 leading-tight">
+        <h1 className="font-sans font-black text-3xl sm:text-4xl text-neutral-900 leading-tight">
           {journal.title}
         </h1>
 
         <div className="flex items-center gap-1.5 text-sm font-semibold text-neutral-700">
-          <MapPin className="w-4 h-4 text-rosewood-500 shrink-0" />
+          <MapPin className="w-4 h-4 text-brand-700 shrink-0" />
           <span>{journal.placeName}</span>
           {journal.location && (
             <>
@@ -193,10 +193,10 @@ export const JournalDetailPage: React.FC = () => {
         </div>
       </header>
 
-      {/* DUAL RATING SECTION (Highlight of the PRD) */}
+      {/* DUAL RATING SECTION */}
       <section className="space-y-3">
         <div className="flex items-center justify-between">
-          <h2 className="font-serif font-bold text-xl text-neutral-900">
+          <h2 className="font-sans font-bold text-xl text-neutral-900">
             Dual Rating &amp; Verdict Berdua
           </h2>
           <span className="text-xs text-neutral-500">Perbandingan skor objektif</span>
@@ -211,9 +211,9 @@ export const JournalDetailPage: React.FC = () => {
       </section>
 
       {/* CERITA MOMEN */}
-      <section className="bg-white rounded-3xl p-6 sm:p-8 border border-cream-200/80 shadow-soft space-y-4">
-        <h3 className="font-serif font-bold text-lg text-neutral-900 flex items-center gap-2">
-          <Heart className="w-4 h-4 text-rosewood-500 fill-rosewood-500" />
+      <section className="bg-white rounded-3xl p-6 sm:p-8 border border-cream-200/90 shadow-soft space-y-4">
+        <h3 className="font-sans font-bold text-lg text-neutral-900 flex items-center gap-2">
+          <Heart className="w-4 h-4 text-brand-700 fill-brand-700" />
           <span>Catatan Momen &amp; Cerita</span>
         </h3>
 

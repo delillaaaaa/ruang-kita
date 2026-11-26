@@ -361,13 +361,13 @@ export const JournalFormModal: React.FC = () => {
             <button
               type="button"
               onClick={closeJournalModal}
-              className="px-4 py-2.5 rounded-xl border border-cream-300 text-neutral-600 font-semibold hover:bg-cream-100 transition-colors"
+              className="px-5 py-2.5 rounded-full border border-cream-300 text-neutral-600 font-bold text-xs uppercase tracking-wider hover:bg-cream-100 transition-colors"
             >
               Batal
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-xl bg-rosewood-500 hover:bg-rosewood-600 text-white font-bold shadow-sm transition-all active:scale-95"
+              className="px-6 py-2.5 rounded-full bg-brand-800 hover:bg-brand-900 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all active:scale-95"
             >
               Simpan Kenangan
             </button>

@@ -20,20 +20,20 @@ export const BottomNav: React.FC = () => {
       {/* Floating Action Menu Popover when FAB is opened */}
       {isFabOpen && (
         <div
-          className="md:hidden fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex flex-col justify-end p-4 pb-24 animate-fade-in"
+          className="md:hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex flex-col justify-end p-4 pb-24 animate-fade-in"
           onClick={() => setIsFabOpen(false)}
         >
           <div
-            className="bg-cream-50 rounded-2xl p-4 shadow-float border border-cream-200 max-w-sm mx-auto w-full space-y-2.5"
+            className="bg-white rounded-3xl p-5 shadow-float border border-cream-200 max-w-sm mx-auto w-full space-y-3"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-2 border-b border-cream-200">
-              <span className="text-xs font-bold text-neutral-500 uppercase tracking-wider">
+              <span className="text-xs font-bold text-brand-800 uppercase tracking-wider">
                 Aksi Cepat Ruang Kita
               </span>
               <button
                 onClick={() => setIsFabOpen(false)}
-                className="p-1 rounded-full text-neutral-400 hover:bg-cream-200"
+                className="p-1 rounded-full text-neutral-400 hover:bg-cream-100"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -44,14 +44,14 @@ export const BottomNav: React.FC = () => {
                 setIsFabOpen(false);
                 openJournalModal();
               }}
-              className="w-full flex items-center gap-3 p-3 rounded-xl bg-rosewood-50 text-rosewood-700 hover:bg-rosewood-100 transition-colors text-left"
+              className="w-full flex items-center gap-3 p-3 rounded-2xl bg-brand-50 hover:bg-brand-100 text-brand-800 transition-colors text-left"
             >
-              <div className="w-9 h-9 rounded-lg bg-rosewood-500 text-white flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-brand-800 text-white flex items-center justify-center shrink-0">
                 <BookOpen className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-sm font-semibold">Tulis Jurnal & Review</div>
-                <div className="text-xs text-neutral-500">Catat momen, foto & rating berdua</div>
+                <div className="text-xs font-bold uppercase tracking-wider">Tulis Jurnal &amp; Review</div>
+                <div className="text-[11px] text-neutral-500">Catat kenangan kuliner, foto &amp; skor</div>
               </div>
             </button>
 
@@ -60,14 +60,14 @@ export const BottomNav: React.FC = () => {
                 setIsFabOpen(false);
                 openBucketModal();
               }}
-              className="w-full flex items-center gap-3 p-3 rounded-xl bg-amber-50 text-amber-800 hover:bg-amber-100 transition-colors text-left"
+              className="w-full flex items-center gap-3 p-3 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-900 transition-colors text-left"
             >
-              <div className="w-9 h-9 rounded-lg bg-amber-500 text-white flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0">
                 <CheckSquare className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-sm font-semibold">Tambah Bucket List</div>
-                <div className="text-xs text-neutral-500">Simpan rencana tempat & aktivitas impian</div>
+                <div className="text-xs font-bold uppercase tracking-wider">Tambah Bucket List</div>
+                <div className="text-[11px] text-neutral-500">Simpan rencana impian tempat &amp; trip</div>
               </div>
             </button>
 
@@ -76,14 +76,14 @@ export const BottomNav: React.FC = () => {
                 setIsFabOpen(false);
                 openRandomizer();
               }}
-              className="w-full flex items-center gap-3 p-3 rounded-xl bg-purple-50 text-purple-800 hover:bg-purple-100 transition-colors text-left"
+              className="w-full flex items-center gap-3 p-3 rounded-2xl bg-pink-50 hover:bg-pink-100 text-pink-900 transition-colors text-left"
             >
-              <div className="w-9 h-9 rounded-lg bg-purple-500 text-white flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-brand-700 text-white flex items-center justify-center shrink-0">
                 <Sparkles className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-sm font-semibold">Tombol "Terserah"</div>
-                <div className="text-xs text-neutral-500">Pilihkan tempat makan/kencan secara acak!</div>
+                <div className="text-xs font-bold uppercase tracking-wider">Tombol "Terserah"</div>
+                <div className="text-[11px] text-neutral-500">Pilihkan tujuan kencan secara acak!</div>
               </div>
             </button>
           </div>
@@ -91,14 +91,14 @@ export const BottomNav: React.FC = () => {
       )}
 
       {/* Mobile Bottom Navigation Bar */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream-50/95 backdrop-blur-md border-t border-cream-200/80 px-2 py-1.5 shadow-lg">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-cream-200/90 px-3 py-1.5 shadow-lg">
         <div className="max-w-md mx-auto flex items-center justify-around relative">
           {/* Left items */}
           <NavLink
             to={navItems[0].to}
             className={({ isActive }) =>
               `flex flex-col items-center justify-center py-1 px-3 text-[11px] font-medium transition-colors ${
-                isActive ? 'text-rosewood-600 font-semibold' : 'text-neutral-500 hover:text-neutral-800'
+                isActive ? 'text-brand-800 font-bold' : 'text-neutral-400 hover:text-neutral-700'
               }`
             }
           >
@@ -110,7 +110,7 @@ export const BottomNav: React.FC = () => {
             to={navItems[1].to}
             className={({ isActive }) =>
               `flex flex-col items-center justify-center py-1 px-3 text-[11px] font-medium transition-colors ${
-                isActive ? 'text-rosewood-600 font-semibold' : 'text-neutral-500 hover:text-neutral-800'
+                isActive ? 'text-brand-800 font-bold' : 'text-neutral-400 hover:text-neutral-700'
               }`
             }
           >
@@ -122,14 +122,14 @@ export const BottomNav: React.FC = () => {
           <div className="relative -top-5 flex flex-col items-center">
             <button
               onClick={() => setIsFabOpen(!isFabOpen)}
-              className={`w-13 h-13 rounded-full bg-gradient-to-tr from-rosewood-500 to-terracotta-500 text-white shadow-float flex items-center justify-center transition-transform active:scale-95 ${
+              className={`w-13 h-13 rounded-full bg-brand-800 text-white shadow-float flex items-center justify-center transition-transform active:scale-95 ${
                 isFabOpen ? 'rotate-45' : ''
               }`}
               aria-label="Aksi Cepat"
             >
               <Plus className="w-6 h-6 stroke-[2.5]" />
             </button>
-            <span className="text-[10px] font-medium text-neutral-400 mt-1">Tambah</span>
+            <span className="text-[9px] font-bold uppercase tracking-wider text-neutral-400 mt-1">Tambah</span>
           </div>
 
           {/* Right items */}
@@ -137,7 +137,7 @@ export const BottomNav: React.FC = () => {
             to={navItems[2].to}
             className={({ isActive }) =>
               `flex flex-col items-center justify-center py-1 px-3 text-[11px] font-medium transition-colors ${
-                isActive ? 'text-rosewood-600 font-semibold' : 'text-neutral-500 hover:text-neutral-800'
+                isActive ? 'text-brand-800 font-bold' : 'text-neutral-400 hover:text-neutral-700'
               }`
             }
           >
@@ -149,7 +149,7 @@ export const BottomNav: React.FC = () => {
             to={navItems[3].to}
             className={({ isActive }) =>
               `flex flex-col items-center justify-center py-1 px-3 text-[11px] font-medium transition-colors ${
-                isActive ? 'text-rosewood-600 font-semibold' : 'text-neutral-500 hover:text-neutral-800'
+                isActive ? 'text-brand-800 font-bold' : 'text-neutral-400 hover:text-neutral-700'
               }`
             }
           >

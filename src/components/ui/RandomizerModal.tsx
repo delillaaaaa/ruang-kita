@@ -159,7 +159,7 @@ export const RandomizerModal: React.FC = () => {
             type="button"
             disabled={isSpinning || candidates.length === 0}
             onClick={handleSpin}
-            className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-rosewood-500 hover:from-purple-700 hover:to-rosewood-600 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-sm transition-all active:scale-98 disabled:opacity-50"
+            className="w-full py-3 px-4 rounded-full bg-brand-800 hover:bg-brand-900 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all active:scale-98 disabled:opacity-50"
           >
             <Shuffle className={`w-4 h-4 ${isSpinning ? 'animate-spin' : ''}`} />
             <span>{isSpinning ? 'Mengacak Tempat...' : 'Acak Sekarang (Terserah!)'}</span>
@@ -179,7 +179,7 @@ export const RandomizerModal: React.FC = () => {
                   costEstimate: chosenItem.budgetEstimate || '',
                 });
               }}
-              className="w-full py-2.5 px-4 rounded-xl bg-cream-200 hover:bg-cream-300 text-neutral-700 font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors"
+              className="w-full py-2.5 px-4 rounded-full bg-cream-200 hover:bg-cream-300 text-neutral-800 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
             >
               <CheckCircle className="w-4 h-4 text-sage-600" />
               <span>Sudah Kunjung &amp; Buat Jurnalnya</span>
