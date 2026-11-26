@@ -141,6 +141,19 @@ export const JournalFormModal: React.FC = () => {
           </button>
         </div>
 
+        {/* Active Persona Banner */}
+        <div className="mt-3 p-2.5 rounded-2xl bg-cream-100 border border-cream-200 flex items-center justify-between text-xs">
+          <div className="flex items-center gap-2">
+            <span className={`w-2.5 h-2.5 rounded-full ${currentUser === 'Januar' ? 'bg-blue-600' : 'bg-pink-500'}`} />
+            <span className="text-neutral-700 font-medium">
+              Menulis sebagai: <strong className={currentUser === 'Januar' ? 'text-blue-700' : 'text-pink-600'}>{currentUser || 'Tamu'}</strong>
+            </span>
+          </div>
+          <span className="text-[10px] font-semibold text-neutral-500">
+            {currentUser === 'Januar' ? '💙 Sudut Pandang Cowok' : '💗 Sudut Pandang Cewek'}
+          </span>
+        </div>
+
         {/* Form Body */}
         <form onSubmit={handleSubmit} className="mt-5 space-y-4 text-xs">
           {/* Judul & Nama Tempat */}
@@ -293,13 +306,24 @@ export const JournalFormModal: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Rating Januar */}
-              <div className="p-3.5 rounded-2xl bg-blue-50/60 border border-blue-100 space-y-2">
+              <div
+                className={`p-3.5 rounded-2xl border space-y-2 transition-all ${
+                  currentUser === 'Januar'
+                    ? 'bg-blue-50 border-blue-400 ring-2 ring-blue-500/30 shadow-xs'
+                    : 'bg-blue-50/40 border-blue-100'
+                }`}
+              >
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-blue-900 flex items-center gap-1.5">
                     <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold">
                       J
                     </span>
                     Rating Januar
+                    {currentUser === 'Januar' && (
+                      <span className="text-[9px] uppercase font-black bg-blue-600 text-white px-2 py-0.2 rounded-full">
+                        Aktif
+                      </span>
+                    )}
                   </span>
                   <div className="flex items-center gap-1">
                     <input
@@ -324,13 +348,24 @@ export const JournalFormModal: React.FC = () => {
               </div>
 
               {/* Rating Adel */}
-              <div className="p-3.5 rounded-2xl bg-pink-50/60 border border-pink-100 space-y-2">
+              <div
+                className={`p-3.5 rounded-2xl border space-y-2 transition-all ${
+                  currentUser === 'Adel'
+                    ? 'bg-pink-50 border-pink-400 ring-2 ring-pink-500/30 shadow-xs'
+                    : 'bg-pink-50/40 border-pink-100'
+                }`}
+              >
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-pink-900 flex items-center gap-1.5">
                     <span className="w-5 h-5 rounded-full bg-pink-500 text-white text-[10px] flex items-center justify-center font-bold">
                       A
                     </span>
                     Rating Adel
+                    {currentUser === 'Adel' && (
+                      <span className="text-[9px] uppercase font-black bg-pink-500 text-white px-2 py-0.2 rounded-full">
+                        Aktif
+                      </span>
+                    )}
                   </span>
                   <div className="flex items-center gap-1">
                     <input

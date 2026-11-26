@@ -21,7 +21,7 @@ import {
 import { useApp } from '../context/AppContext';
 
 export const HomePage: React.FC = () => {
-  const { journals, bucketList, stats, openJournalModal, openBucketModal, openRandomizer, toggleBucketStatus } = useApp();
+  const { currentUser, journals, bucketList, stats, openJournalModal, openBucketModal, openRandomizer, toggleBucketStatus } = useApp();
 
   const recentJournals = journals.slice(0, 4);
   const activeBucketItems = bucketList.filter((b) => b.status === 'wishlist').slice(0, 3);
@@ -411,28 +411,34 @@ export const HomePage: React.FC = () => {
                 </div>
 
                 {/* Stat 3 */}
-                <div className="flex flex-col items-center">
+                <div className={`flex flex-col items-center p-1.5 rounded-2xl transition-all ${
+                  currentUser === 'Januar' ? 'bg-blue-100/60 ring-2 ring-blue-500 shadow-xs' : 'opacity-80'
+                }`}>
                   <div className="w-10 h-10 rounded-2xl bg-white border border-brand-100 flex items-center justify-center text-brand-800 mb-2 shadow-2xs">
-                    <Award className="w-4.5 h-4.5" />
+                    <Award className={`w-4.5 h-4.5 ${currentUser === 'Januar' ? 'text-blue-600' : 'text-neutral-500'}`} />
                   </div>
-                  <span className="font-black text-sm sm:text-base text-brand-800 leading-tight">
+                  <span className={`font-black text-sm sm:text-base leading-tight ${currentUser === 'Januar' ? 'text-blue-700' : 'text-brand-800'}`}>
                     ★ {stats.averageRatingJanuar}
                   </span>
-                  <span className="text-[10px] font-bold uppercase text-neutral-500 tracking-wider mt-0.5">
-                    JANUAR
+                  <span className="text-[10px] font-bold uppercase text-neutral-600 tracking-wider mt-0.5 flex items-center gap-1">
+                    <span>JANUAR</span>
+                    {currentUser === 'Januar' && <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />}
                   </span>
                 </div>
 
                 {/* Stat 4 */}
-                <div className="flex flex-col items-center">
+                <div className={`flex flex-col items-center p-1.5 rounded-2xl transition-all ${
+                  currentUser === 'Adel' ? 'bg-pink-100/60 ring-2 ring-pink-500 shadow-xs' : 'opacity-80'
+                }`}>
                   <div className="w-10 h-10 rounded-2xl bg-white border border-brand-100 flex items-center justify-center text-brand-800 mb-2 shadow-2xs">
-                    <Flame className="w-4.5 h-4.5" />
+                    <Flame className={`w-4.5 h-4.5 ${currentUser === 'Adel' ? 'text-pink-500' : 'text-neutral-500'}`} />
                   </div>
-                  <span className="font-black text-sm sm:text-base text-brand-800 leading-tight">
+                  <span className={`font-black text-sm sm:text-base leading-tight ${currentUser === 'Adel' ? 'text-pink-700' : 'text-brand-800'}`}>
                     ★ {stats.averageRatingAdel}
                   </span>
-                  <span className="text-[10px] font-bold uppercase text-neutral-500 tracking-wider mt-0.5">
-                    ADEL
+                  <span className="text-[10px] font-bold uppercase text-neutral-600 tracking-wider mt-0.5 flex items-center gap-1">
+                    <span>ADEL</span>
+                    {currentUser === 'Adel' && <span className="w-1.5 h-1.5 rounded-full bg-pink-500" />}
                   </span>
                 </div>
               </div>
